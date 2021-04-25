@@ -1,0 +1,768 @@
+@charset "UTF-8";
+/*@mixin skyMove($speed){
+  -webkit-animation: sky_background $speed+s ease-out infinite;
+  -moz-animation: sky_background $speed+s ease-out infinite;
+  -o-animation: sky_background $speed+s ease-out infinite;
+  animation: sky_background $speed+s ease-out infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+
+
+}
+
+@mixin cloudMove($speed){
+  -webkit-animation: cloud_one $speed+s linear infinite;
+  -moz-animation: cloud_one $speed+s linear infinite;
+  -o-animation: cloud_one $speed+s linear infinite;
+  animation: cloud_one $speed+s linear infinite;
+  -webkit-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}*/
+html {
+  /* 对应值为 font-size: 10px; */
+  font-size: 62.5%; }
+
+body {
+  font-family: Verdana,"Helvetica Neue", Helvetica,"PingFang SC", "Source-Han-Light", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, "sans-serif";
+  color: #333;
+  margin: 0;
+  overflow: auto;
+  overflow-x: hidden;
+  /*加载完成后才显示滚动条*/
+  overflow-y: hidden;
+  background-color: #c3e6e6;
+  /*@extend .bgGradient1;*/
+  /* 加载背景图 */
+  background-image: url("../images/pre_bg_gradient.gif");
+  /* 背景图垂直、水平均居中 */
+  background-position: center center;
+  /* 背景图不平铺 */
+  background-repeat: no-repeat;
+  /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+  background-attachment: fixed;
+  /* 让背景图基于容器大小伸缩 */
+  background-size: cover;
+  /* 设置背景颜色，背景图加载过程中会显示渐变背景色 */
+  background-color: #c3e6e6;
+  /* @include gradient_angle($gradient2-top,$gradient2-bottom);
+   background-color: $gradient2-top;*/ }
+
+p {
+  font-size: 1.4rem;
+  line-height: 30px;
+  margin-bottom: 5px; }
+
+table {
+  width: 1000px; }
+
+tr {
+  padding-bottom: 30px; }
+
+td {
+  padding-left: 30px;
+  vertical-align: text-top; }
+
+a:link {
+  text-decoration: none;
+  color: #999; }
+
+a:visited {
+  text-decoration: none;
+  color: #999; }
+
+a:hover {
+  text-decoration: underline;
+  color: #999; }
+
+img {
+  max-width: 100%;
+  border: none; }
+
+.postLoading {
+  /*display:none;*/ }
+
+.relativeBox {
+  position: relative; }
+
+#posControl2, #posControl3, #posControl4, #posControl5, #posControl6, #posControl7, #posControl8, #posControl9 {
+  position: absolute;
+  left: 0;
+  right: 0; }
+
+.ez-box .about_left {
+  background-color: #fff44f; }
+  .ez-box .about_left .title {
+    width: 109px;
+    height: 44px; }
+  .ez-box .about_left .textbox {
+    width: 60%;
+    text-align: right; }
+
+.ez-box .about_right {
+  background-color: #f7ffff;
+  height: 100%; }
+  .ez-box .about_right .title {
+    width: 70px;
+    height: 61px; }
+  .ez-box .about_right .textbox {
+    width: 70%;
+    text-align: left; }
+
+.alignLeft {
+  text-align: left; }
+
+.alignRight {
+  text-align: right; }
+
+/*.top {
+  @include bgImage("../images/top/Lemon-Island.jpg",$bgColor);
+
+  color: $white;
+  !*margin-right: 57px;*!
+  !*width: 100%;
+  margin: 0 auto;*!
+
+  width: 100%;
+  position: relative;
+  z-index: 99;
+
+  !*为了解决JS加载之前的位置问题*!
+  height: 1070px;
+  .textCenter{
+    padding-top: 15%;
+    position: relative;
+    z-index: 2;
+  }
+
+}*/
+/*#overlay {
+  background-color: #000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  opacity: 0.08;
+}*/
+#scene {
+  padding: 0;
+  margin: 0;
+  width: 115%;
+  height: 120vh;
+  overflow: hidden;
+  top: -5%;
+  left: -5%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  position: relative;
+  /*为了解决（遮住）图片加载完之前没有全屏，只显示在左上角的效果，加载完成后再用JS控制层级显示在背景图上层*/
+  z-index: -31; }
+
+.main {
+  /* width: 100%;
+   height: 100vh;
+   overflow: hidden;
+   position:fixed;*/
+  /* 加载背景图 */
+  background-image: url("../images/top/Lemon-Island.jpg");
+  /* 背景图垂直、水平均居中 */
+  background-position: center center;
+  /* 背景图不平铺 */
+  background-repeat: no-repeat;
+  /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+  background-attachment: fixed;
+  /* 让背景图基于容器大小伸缩 */
+  background-size: cover;
+  /* 设置背景颜色，背景图加载过程中会显示渐变背景色 */
+  background-color: #c3e6e6;
+  /* @include gradient_angle($gradient2-top,$gradient2-bottom);
+   background-color: $gradient2-top;*/
+  /*为了解决（遮住）图片加载完之前没有全屏，只显示在左上角的情况，在加载完之前先用背景图遮住*/
+  z-index: -30; }
+
+.wrapper {
+  position: absolute;
+  /*top: 35%;
+  left: 37%;*/
+  z-index: 101;
+  /*transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);*/
+  text-align: center; }
+  .wrapper img {
+    /*width: 350px;
+    height: auto;*/ }
+
+.wrapperAlign {
+  top: 10%;
+  left: 40%; }
+
+.layer {
+  /*width: 30%;
+  height: 120vh;
+  overflow: hidden;*/ }
+
+.layer1 {
+  background-image: url("../images/top/Lemon-Island.jpg");
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -5%;
+  top: -5%; }
+
+.layer2 {
+  background-image: url("../images/top/cloud1.png");
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -5%;
+  top: -5%; }
+
+.layer3 {
+  background-image: url("../images/top/cloud2.png");
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -5%;
+  top: -5%; }
+
+.layer4 {
+  background-image: url("../images/top/cloud3.png");
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -5%;
+  top: -5%; }
+
+.layer5 {
+  background-image: url("../images/top/foreground.png");
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -5%;
+  top: -5%;
+  width: 105%;
+  /*left:2%;
+  top: 2%;*/ }
+
+@media (max-width: 700px) {
+  /*.layer2 {
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    width: 167%;
+    height: 77vh;
+    left: -69%;
+    top: 27%;
+  }
+
+  .layer1 {
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    width: 100%;
+    height: 115%;
+    left: -5%;
+    top: -1%;
+  }
+ 
+  .wrapper img {
+    width: 180px;
+    height: auto;
+  }*/ }
+/*.sky {
+  height: 1070px;
+  position: relative;
+  z-index: -1;
+ !* overflow: hidden;*!
+
+
+}
+@keyframes sky_background {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: transparent;
+
+  }
+  100% {
+    background-color: transparent;
+
+  }
+}
+
+.clouds_one {
+
+  margin-top: -25%;
+  background: url("../images/top/cloud1.png");
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+
+  @include cloudMove(300);
+}
+@keyframes cloud_one {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -200%;
+  }
+}
+
+
+.clouds_two {
+
+  margin-top: -55%;
+  background: url("../images/top/cloud2.png");
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+
+  @include cloudMove(400);
+}
+@keyframes cloud_two {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -200%;
+  }
+}
+
+.clouds_three {
+
+  margin-top: -25%;
+  background: url("../images/top/cloud3.png");
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 300%;
+
+  @include cloudMove(500);
+}
+@keyframes cloud_three {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -200%;
+  }
+}*/
+.bottom {
+  /* 加载背景图 */
+  background-image: url("../images/CV_pdf6_bg.jpg");
+  /* 背景图垂直、水平均居中 */
+  background-position: center center;
+  /* 背景图不平铺 */
+  background-repeat: no-repeat;
+  /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+  background-attachment: fixed;
+  /* 让背景图基于容器大小伸缩 */
+  background-size: cover;
+  /* 设置背景颜色，背景图加载过程中会显示渐变背景色 */
+  background-color: #ffedec;
+  /* @include gradient_angle($gradient2-top,$gradient2-bottom);
+   background-color: $gradient2-top;*/
+  color: #fff;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #ffedec; }
+
+.about {
+  height: 600px; }
+  .about div {
+    height: 100%; }
+    .about div .jsVcenter {
+      height: auto; }
+  .about .jsVcenter {
+    padding-top: 5%; }
+
+.intro {
+  position: relative;
+  z-index: 1;
+  /* 加载背景图 */
+  background-image: url("../images/intro/intro_bg_gradient.jpg");
+  /* 背景图垂直、水平均居中 */
+  background-position: center center;
+  /* 背景图不平铺 */
+  background-repeat: no-repeat;
+  /* 当内容高度大于图片高度时，背景图像的位置相对于viewport固定 */
+  background-attachment: fixed;
+  /* 让背景图基于容器大小伸缩 */
+  background-size: cover;
+  /* 设置背景颜色，背景图加载过程中会显示渐变背景色 */
+  background-color: #fff;
+  /* @include gradient_angle($gradient2-top,$gradient2-bottom);
+   background-color: $gradient2-top;*/ }
+  .intro .section {
+    width: 100%;
+    position: relative; }
+  .intro .lightCircle {
+    position: absolute;
+    /*   top: -60%;*/
+    left: 50%; }
+  .intro .intro1_PC {
+    /*position: relative;
+    margin-top: 60%;*/
+    z-index: 9; }
+  .intro .intro1_mobile {
+    position: absolute;
+    z-index: 10;
+    margin-left: 15%;
+    margin-top: 30rem; }
+  .intro .titleGraphic {
+    position: absolute;
+    top: 35%;
+    right: 20%;
+    z-index: 1; }
+  .intro .title {
+    line-height: 28px; }
+    .intro .title.right {
+      top: 5%;
+      right: 5%; }
+    .intro .title .num {
+      font-size: 72px; }
+    .intro .title .text {
+      font-size: 32px; }
+  .intro .titleVI {
+    /*margin-left: 30%;*/ }
+  .intro .screens1 {
+    z-index: 1; }
+  .intro .book1 {
+    position: absolute; }
+  .intro .screens2 {
+    position: absolute;
+    left: -40%;
+    z-index: -20; }
+  .intro .shadowBasic, .intro .screens1_shadow, .intro .intro1_PC_shadow, .intro .intro1_mobile_shadow, .intro .vi_shadow {
+    position: absolute;
+    max-width: initial;
+    z-index: -20; }
+  .intro .screens1_shadow, .intro .intro1_PC_shadow, .intro .intro1_mobile_shadow {
+    top: -3rem;
+    left: -10rem; }
+  .intro .vi_shadow {
+    top: 0;
+    left: -3rem;
+    max-width: 100%; }
+
+.bgGradient1 {
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=$gradient-top, endColorStr=$gradient-bottom);
+  /*IE*/
+  background: -moz-linear-gradient(top, #c3e6e6, #f9ffba);
+  /*火狐*/
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c3e6e6), to(#f9ffba));
+  /*谷歌*/ }
+
+.pre1, .pre2 {
+  /*@include bgImage("../images/intro/intro_bg_gradient.jpg",$lightBlue);*/
+  position: relative; }
+  .pre1 p, .pre2 p {
+    text-align: center; }
+    .pre1 p.cn, .pre2 p.cn {
+      font-size: 5rem;
+      color: #86bfbf; }
+    .pre1 p.en, .pre2 p.en {
+      font-size: 3rem;
+      color: #325461;
+      margin-top: 2rem; }
+  .pre1 .logo_pattern1, .pre1 .logo_pattern2, .pre2 .logo_pattern1, .pre2 .logo_pattern2 {
+    position: absolute;
+    /*left: -80%;
+    top:-80%;*/
+    z-index: -20; }
+
+.bgWhite {
+  background-color: #fff; }
+
+.works_graphic {
+  background-color: #fff; }
+
+.works_photo {
+  background-color: #fff;
+  /*margin-top:-0.28rem;*/ }
+
+.experience {
+  font-size: 16px;
+  color: #666;
+  line-height: 30px;
+  padding: 3%;
+  clear: both;
+  width: 100%;
+  height: 1850px;
+  filter: progid:DXImageTransform.Microsoft.Gradient(gradientType=0, startColorStr=$gradient-top, endColorStr=$gradient-bottom);
+  /*IE*/
+  background: -moz-linear-gradient(top, #c3e6e6, #f9ffba);
+  /*火狐*/
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#c3e6e6), to(#f9ffba));
+  /*谷歌*/
+  background-color: #c3e6e6;
+  padding-top: 10%; }
+
+.textCenter {
+  text-align: center; }
+
+/*DIV水平对齐开始*/
+.centerH_auto {
+  margin: 0 auto;
+  /*margin-left: auto;
+  margin-right: auto;*/ }
+
+/*父*/
+.div_centerHF {
+  display: block;
+  float: left;
+  position: relative;
+  left: 50%; }
+
+/*子*/
+.div_centerH {
+  display: block;
+  float: left;
+  position: relative;
+  right: 50%; }
+
+/*DIV水平对齐结束*/
+/*DIV垂直对齐开始*/
+.Vcenter_WHfixed_1000x520 {
+  width: 1000px;
+  height: 520px;
+  margin-left: -500px;
+  /*值的大小等于元素宽度的一半*/
+  margin-top: -350px;
+  /*值的大小等于元素高度的一半*/ }
+
+.Vcenter_WHfixed {
+  position: absolute;
+  left: 50%;
+  /*配合margin-left的负值实现水平居中*/
+  top: 50%;
+  /*配合margin-top的负值实现垂直居中*/ }
+
+/*DIV垂直对齐开始*/
+/*左右容器开始*/
+.divBlock_left {
+  display: block;
+  float: left; }
+
+.divBlock_left_clear, .intro .section {
+  display: block;
+  float: left;
+  clear: both; }
+
+.divBlock_right {
+  display: block;
+  float: right; }
+
+/*左右容器结束*/
+/*垂直间距开始*/
+.MarginT_-1 {
+  margin-top: -0.1rem; }
+
+.MarginT_-2 {
+  margin-top: -0.2rem; }
+
+.MarginT_-3 {
+  margin-top: -0.3rem; }
+
+.MarginT_-4 {
+  margin-top: -0.4rem; }
+
+.MarginT_-5 {
+  margin-top: -0.5rem; }
+
+.MarginT_-6 {
+  margin-top: -0.6rem; }
+
+.MarginT_-7 {
+  margin-top: -0.7rem; }
+
+.MarginT_-8 {
+  margin-top: -0.8rem; }
+
+.MarginT_-9 {
+  margin-top: -0.9rem; }
+
+.MarginT_-10 {
+  margin-top: -0.1rem; }
+
+.MarginT_30 {
+  margin-top: -0.3rem; }
+
+.MarginB_30 {
+  margin-bottom: 3rem; }
+
+.MarginB_50 {
+  margin-bottom: 5rem; }
+
+.MarginB_80, .intro .section {
+  margin-bottom: 8rem; }
+
+.MarginB_150, .intro .title {
+  margin-bottom: 15rem; }
+
+.MarginB_250 {
+  margin-bottom: 25rem; }
+
+/*垂直间距结束*/
+.left_logo {
+  width: 274px; }
+
+.right {
+  clear: both;
+  width: 100%;
+  text-align: right; }
+
+.mute {
+  color: #999; }
+
+.grey666 {
+  color: #666; }
+
+.textBlue, .intro .title .num {
+  color: #86bfbf; }
+
+.textMiddleBlue {
+  color: #406a7b; }
+
+.textDarkBlue, .intro .title .text {
+  color: #325461; }
+
+.jobTitle {
+  font-size: 18px; }
+
+.textcontact {
+  /*font-family: Verdana, Helvertica, "Source-Han-Light", 微软雅黑，Arial;*/
+  font-size: 18px;
+  color: #304040;
+  padding-top: 20px; }
+
+.divided-line {
+  border-bottom: 1px dashed #c3e6e6; }
+
+.list_space {
+  padding-top: 15px; }
+
+.fieldeng {
+  color: #666;
+  font-size: 16px; }
+
+.fieldeng999 {
+  color: #999;
+  font-size: 15px; }
+
+.rightmargin {
+  margin-right: 57px; }
+
+.fieldtitle {
+  float: left;
+  width: 120px;
+  font-size: 13px;
+  line-height: 30px;
+  color: #666;
+  margin-top: 165px;
+  margin-left: 20px; }
+
+.field {
+  float: left;
+  width: 480px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 30px;
+  text-align: left;
+  margin-top: 160px;
+  margin-left: -45px; }
+
+.fieldtitle li {
+  text-align: left; }
+
+.field li {
+  text-align: left; }
+
+li {
+  display: inline; }
+
+.drawingsize1 {
+  width: 330px;
+  height: inherit; }
+
+.photo1 {
+  float: left; }
+
+.photo2 {
+  float: left;
+  margin-left: 10px; }
+
+.workstitle {
+  float: left;
+  margin-top: 50px;
+  width: 100%;
+  margin-right: 15px;
+  padding: 0; }
+
+.category {
+  padding-top: 25px; }
+
+.showIn1400 {
+  display: none; }
+
+@media only screen and (max-width: 1920px) {
+  .ez-W1 {
+    width: 40%; }
+
+  .ez-W2 {
+    width: 20%; }
+
+  .hideIn1920 {
+    display: none; } }
+@media only screen and (max-width: 1680px) {
+  .intro .screens2 {
+    left: -55%; } }
+@media only screen and (max-width: 1400px) {
+  .ez-W1 {
+    width: 66.66666%; }
+
+  .ez-W2 {
+    width: 33.33333%; }
+
+  .hideIn1400 {
+    display: none; }
+
+  .showIn1400 {
+    display: block; }
+
+  .wrapperAlign {
+    left: 35%; }
+
+  .intro .screens2 {
+    left: -80%; } }
+@media only screen and (max-width: 1280px) {
+  .wrapperAlign {
+    top: 22%;
+    left: 35%; } }
+@media only screen and (max-width: 768px) {
+  .wrapperAlign {
+    top: 10%;
+    left: 25%; } }
+@media only screen and (max-width: 640px) {
+  .wrapperAlign {
+    left: 20%; } }
