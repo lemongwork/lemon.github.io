@@ -202,7 +202,7 @@ img {
   text-align: right;
 }
 /*.top {
-  @include bgImage("../images/top/Lemon-Island.jpg",$bgColor);
+  @include bgImage("../images/KV/cover.jpg",$bgColor);
 
   color: $white;
   !*margin-right: 57px;*!
@@ -253,7 +253,7 @@ img {
   height: 100vh;
   overflow: hidden;
   position:fixed;*/
-  @include bgImage("../images/top/Lemon-Island.jpg",$bgColor);
+  @include bgImage("../images/KV/cover.jpg",$bgColor);
 
   /*为了解决（遮住）图片加载完之前没有全屏，只显示在左上角的情况，在加载完之前先用背景图遮住*/
   z-index:-30;
@@ -275,7 +275,7 @@ img {
 }
 
 .wrapperAlign{
-  top:10%;
+  top:20%;
   left:40%;
 }
 
@@ -287,23 +287,24 @@ img {
 }
 
 .layer1 {
-  @include followMouseMove("../images/top/Lemon-Island.jpg");
+  @include followMouseMove("../images/KV/cover.jpg");
 
 }
 .layer2 {
-  @include followMouseMove("../images/top/cloud1.png");
+  @include followMouseMove("../images/KV/cloud1.png");
 
 }
+
 .layer3 {
-  @include followMouseMove("../images/top/cloud2.png");
+  @include followMouseMove("../images/KV/cloud2.png");
 
 }
 .layer4 {
-  @include followMouseMove("../images/top/cloud3.png");
+  @include followMouseMove("../images/KV/cloud3.png");
 
 }
 .layer5 {
-  @include followMouseMove("../images/top/foreground.png");
+  @include followMouseMove("../images/KV/foreground.png");
   width: 105%;
   /*left:2%;
   top: 2%;*/
@@ -360,7 +361,7 @@ img {
 .clouds_one {
 
   margin-top: -25%;
-  background: url("../images/top/cloud1.png");
+  background: url("../images/KV/cloud1.png");
   position: absolute;
   left: 0;
   top: 0;
@@ -382,7 +383,7 @@ img {
 .clouds_two {
 
   margin-top: -55%;
-  background: url("../images/top/cloud2.png");
+  background: url("../images/KV/cloud2.png");
   position: absolute;
   left: 0;
   top: 0;
@@ -403,7 +404,7 @@ img {
 .clouds_three {
 
   margin-top: -25%;
-  background: url("../images/top/cloud3.png");
+  background: url("../images/KV/cloud3.png");
   position: absolute;
   left: 0;
   top: 0;
@@ -422,7 +423,7 @@ img {
 }*/
 
 .bottom {
-  @include bgImage("../images/CV_pdf6_bg.jpg",$lightPink);
+  @include bgImage("../images/KV/back_cover.jpg",$lightPink);
 
 
   color: $white;
