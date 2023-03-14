@@ -466,6 +466,17 @@ $('#scene').parallax();
 $('.pace').css({'top':screenHeight*0.9,'left':'50%'});
 $('.pace-activity').css({'top':screenHeight*0.9,'left':'50%'});
 $('#scene').css({'z-index':'0'});
+
+/*控制scroll-indicator消失*/
+$(window).scroll(function() {
+    if ($(this).scrollTop()> 20) {
+        $('.scroll-indicator').fadeOut();
+     }
+    else {
+      $('.scroll-indicator').fadeIn();
+     }
+ });
+	
 </script>
 
 <!--<script type="text/javascript">
