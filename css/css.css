@@ -295,15 +295,28 @@ img {
   z-index: 101;
   /*transform: translate(-50%,-50%);
   -webkit-transform: translate(-50%,-50%);*/
+  /*css3 flex-box 居中方案*/
   position: absolute;
+  top: 0;
   left: 0;
   right: 0;
-  top: 20%;
-  margin: 0 auto;
-  text-align: center; }
+  bottom: 0;
+  display: -webkit-box;
+  -webkit-box-align: center;
+  -webkit-box-pack: center; }
   .wrapper img {
     /*width: 350px;
     height: auto;*/ }
+
+.cell {
+  width: 100%;
+  display: table-cell;
+  vertical-align: middle; }
+
+#inner {
+  display: inline-block;
+  width: 800px;
+  /*border: 1px solid #000;*/ }
 
 /*.wrapperAlign{
   top:20%;
@@ -761,11 +774,17 @@ img {
 .jobTitle {
   font-size: 18px; }
 
-.textcontact {
+.quote {
   /*font-family: Verdana, Helvertica, "Source-Han-Light", 微软雅黑，Arial;*/
-  font-size: 18px;
+  font-size: 32px;
   color: #304040;
   padding-top: 20px; }
+
+.textcontact {
+  /*font-family: Verdana, Helvertica, "Source-Han-Light", 微软雅黑，Arial;*/
+  font-size: 16px;
+  color: #304040;
+  padding: 16px; }
 
 .divided-line {
   border-bottom: 1px dashed #c3e6e6; }
