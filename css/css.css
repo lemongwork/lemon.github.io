@@ -154,7 +154,7 @@ img {
   display: block;
   position: fixed;
   z-index: 2000;
-  margin: -10px; }
+  margin-left: -10px; }
 
 .scroll-indicator {
   letter-spacing: 1px;
