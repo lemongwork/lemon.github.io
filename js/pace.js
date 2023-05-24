@@ -903,6 +903,7 @@
             console.log('laaaaaaaaaaaaaaaaaaaaaa');
             $('.postLoading').css({'display':'block'});
             $('body').css({'overflow-y':'auto'});
+			$(".scroll-indicator").fadeIn();
             initialVar();
             initialPos();
             jsVcenter();
