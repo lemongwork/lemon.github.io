@@ -246,7 +246,7 @@
         this.el.className = "pace pace-active";
         document.body.className = document.body.className.replace(/pace-done/g, '');
         document.body.className += ' pace-running';
-        this.el.innerHTML = '<div class="pace-progress">\n  <div class="pace-progress-inner"></div>\n</div>\n<div class="pace-activity"></div>';
+        this.el.innerHTML = '<div class="pace-progress">\n  <div class="pace-progress-inner"></div>\n</div>\n<div class="pace-activity"></div><div class="loading-text">loading</div>';
         if (targetElement.firstChild != null) {
           targetElement.insertBefore(this.el, targetElement.firstChild);
         } else {

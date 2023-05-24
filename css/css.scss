@@ -260,6 +260,16 @@ img {
         transform: rotate(360deg);
       }
     }
+.loading-text{
+	font-size: 10px;
+	text-transform: uppercase;
+	color: white;
+	display: block;
+  position: fixed;
+  z-index: 2000;
+	margin: -10px;
+}
+
 .scroll-indicator {
       letter-spacing: 1px;
       font-size: 10px;
