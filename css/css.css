@@ -167,7 +167,8 @@ img {
   color: #fff;
   text-align: center;
   text-transform: uppercase;
-  z-index: 100; }
+  z-index: 100;
+  display: none; }
 
 .scroll-indicator .scroll-indicator-icon {
   position: relative;
